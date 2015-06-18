@@ -19,6 +19,7 @@ var (
 package {{.Package}}
 
 import (
+	"gopkg.in/tamtam-im/goth.v1"
 	"gopkg.in/tamtam-im/goth.v1/hub"
 	"gopkg.in/tamtam-im/goth.v1/hub/pool"
 )
@@ -30,8 +31,8 @@ func (c *{{.Svc}}Client) Close() {
 
 {{ if .Def }}
 // Get default client for {{.Svc}} service
-func NewClient(options ...*client.TOptions) (res *{{.Svc}}Client, err error) {
-	opts := client.GetTOptions(options...)
+func NewClient(options ...*hub.TOptions) (res *{{.Svc}}Client, err error) {
+	opts := hub.GetTOptions(options...)
 	t, err := opts.HubFactory().Take(opts, "{{.Package}}")
 	if err != nil {
 		return
@@ -42,13 +43,13 @@ func NewClient(options ...*client.TOptions) (res *{{.Svc}}Client, err error) {
 {{ end }}
 
 // Get new multiplexed client for {{.Svc}} service
-func New{{.Svc}}Client(options ...*client.TOptions) (res *{{.Svc}}Client, err error) {
-	opts := client.GetTOptions(options...)
+func New{{.Svc}}Client(options ...*hub.TOptions) (res *{{.Svc}}Client, err error) {
+	opts := hub.GetTOptions(options...)
 	t, err := opts.HubFactory().Take(opts, "{{.Package}}")
 	if err != nil {
 		return
 	}
-	p := client.NewTMultiplexedProtocolFactory("{{.Svc}}", opts.ProtoFactory())
+	p := goth.NewTMultiplexedProtocolFactory("{{.Svc}}", opts.ProtoFactory())
 	res = New{{.Svc}}ClientFactory(t, p)
 	return
 }

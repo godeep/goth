@@ -1,4 +1,4 @@
-package client
+package goth
 
 import (
 	"github.com/apache/thrift/lib/go/thrift"

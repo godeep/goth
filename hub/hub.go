@@ -1,8 +1,8 @@
-package client
+package hub
 
 import (
-	"bitbucket.org/tamtam-im/tamtam-proto/go/client/pool"
-	"bitbucket.org/tamtam-im/tamtam-proto/go/client/resolver"
+	"github.com/tamtam-im/goth/hub/pool"
+	"github.com/tamtam-im/goth/hub/resolver"
 	"fmt"
 	"github.com/benschw/dns-clb-go/clb"
 	"gopkg.in/tamtam-im/logx.v4"

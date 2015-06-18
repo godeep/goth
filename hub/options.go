@@ -1,4 +1,4 @@
-package client
+package hub
 import (
 	"time"
 	"golang.org/x/net/context"
