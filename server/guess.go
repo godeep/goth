@@ -20,7 +20,7 @@ func GuessProtoFactory(what string) (res thrift.TProtocolFactory) {
 
 func GuessTransportFactory(framed bool, buffer int) (res thrift.TTransportFactory) {
 	if buffer != 0 {
-		res = thrift.NewTBufferedTransportFactory(s.Buffer)
+		res = thrift.NewTBufferedTransportFactory(buffer)
 	} else {
 		res = thrift.NewTTransportFactory()
 	}
