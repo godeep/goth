@@ -1,4 +1,4 @@
-package goth
+package hub
 
 import (
 	"github.com/apache/thrift/lib/go/thrift"

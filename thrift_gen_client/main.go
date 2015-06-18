@@ -19,9 +19,8 @@ var (
 package {{.Package}}
 
 import (
-	"gopkg.in/tamtam-im/goth.v1"
-	"gopkg.in/tamtam-im/goth.v1/hub"
-	"gopkg.in/tamtam-im/goth.v1/hub/pool"
+	"github.com/tamtam-im/goth/hub"
+	"github.com/tamtam-im/goth/hub/pool"
 )
 
 // Return client transport to pool
@@ -49,7 +48,7 @@ func New{{.Svc}}Client(options ...*hub.TOptions) (res *{{.Svc}}Client, err error
 	if err != nil {
 		return
 	}
-	p := goth.NewTMultiplexedProtocolFactory("{{.Svc}}", opts.ProtoFactory())
+	p := hub.NewTMultiplexedProtocolFactory("{{.Svc}}", opts.ProtoFactory())
 	res = New{{.Svc}}ClientFactory(t, p)
 	return
 }
